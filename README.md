@@ -1,35 +1,33 @@
 <h1 align="center">PWA Budget Tracker</h1>
 
 <p align="center">
-    <a target="_blank" href="https://enigmatic-cliffs-72783.herokuapp.com/">Link To Deployed Website</a>
+    <a target="_blank" href="">Link To Deployed Website</a>
 </p>
 
 <br />
 
 <p align="center">
     <img src="https://img.shields.io/badge/license-MIT-blue" />
-    <img src="https://img.shields.io/github/repo-size/jonathanprill/spray-can-project-2" />
+    <img src="https://img.shields.io/github/repo-size/jonathanprill/pwa-budget-tracker" />
     <!-- <img src="https://img.shields.io/github/languages/top/jonathanprill/spray-can-project-2"  />  -->
-    <img src="https://img.shields.io/github/issues/jonathanprill/spray-can-project-2" />
-    <img src="https://img.shields.io/github/last-commit/jonathanprill/spray-can-project-2" >
+    <img src="https://img.shields.io/github/issues/jonathanprill/pwa-budget-tracker" />
+    <img src="https://img.shields.io/github/last-commit/jonathanprill/pwa-budget-tracker" >
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/badge/Handlebars-orange"  />
+    <img src="https://img.shields.io/badge/-PWAs-green" />
+    <img src="https://img.shields.io/badge/-indexedDB-red" />
+    <img src="https://img.shields.io/badge/-express-blue" />
     <img src="https://img.shields.io/badge/npm-red" />
-    <img src="https://img.shields.io/badge/-heroku-purple" />
-    <img src="https://img.shields.io/badge/-sequelize-blue" >
-    <img src="https://img.shields.io/badge/mySQL-orange"  />
+    <img src="https://img.shields.io/badge/-MongoDB-green" />
+    <img src="https://img.shields.io/badge/-Mongoose-red" />
     <img src="https://img.shields.io/badge/-node.js-green" />
-    <img src="https://img.shields.io/badge/-Insomnia-purple" />
-    <img src="https://img.shields.io/badge/-Leaflet-green" />
-    <img src="https://img.shields.io/badge/-Multer-red" />
 </p>
 
 
 ## Description
 
-A social media website made to keep track of the ever changing street art around our favorite cities. Designed to bring together artists and street art fans from around the world, this app creates an envirment for poeple to share current street art pictures and tag its' location. This site was built using the MVC paradigm in its architectural structure and uses Handlebars.js as the templating language, all while leveraging Leaflet and Multer to bring this app to life.
+A budget tool to track your money online or offline. Add or subtract money from your account offline and the databases will update once it has a connection.
 
 
 ## Table of Contents 
@@ -43,13 +41,13 @@ A social media website made to keep track of the ever changing street art around
 
 ## Installation
 
-If you want to run this app on your local machine you can clone or download the zip file from github. Install Node and MySQL if you do not already have them. In the root directory, create a .env file with your mySQL credentials. Then in your terminal type 'npm install' and press enter. You are now all set to use the app!
+If you want to run this app on your local machine you can clone or download the zip file from github. Install Node if you do not already have it. In your root directory type 'npm install' and press enter. If you want to use this website as an app you can download it through chrome and run it locally just like you would any app from the app store.
 
 ## Usage
 
-![ScreenShot](/assets/images/enigmatic-cliffs-iPhone%20SE.png "screenshot")
+![ScreenShot](/public/assets/images/localhost_3001_%20(1).png "screenshot")
 
-To get the best experience, go to the deployed site linked above. Make an account and create you first post. Spend a few minutes browsing around our map feature. Don't forget to collaborate!
+To get the best experience, go to the deployed and add the app to your machine. Now you can track your funds on or offline.
 
 ## License
 

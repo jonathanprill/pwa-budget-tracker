@@ -4,11 +4,12 @@ const CACHE_NAME = APP_PREFIX + VERSION;
 const DATA_CACHE_NAME = "data-cache-" + VERSION;
 
 const FILES_TO_CACHE = [
-    "/",
-    "./js/index.js",
-    './manifest.json',
-    "./css/styles.css",
+    '/',
+    './index.html',
+    './css/styles.css',
     './js/idb.js',
+    './js/index.js',
+    './manifest.json',
     './icons/icon-512x512.png',
     './icons/icon-384x384.png',
     './icons/icon-192x192.png',
@@ -16,8 +17,7 @@ const FILES_TO_CACHE = [
     './icons/icon-144x144.png',
     './icons/icon-128x128.png',
     './icons/icon-96x96.png',
-    './icons/icon-72x72.png',
-    "./index.html"
+    './icons/icon-72x72.png'
 ];
 
 // Cache resources
@@ -57,38 +57,49 @@ self.addEventListener('activate', function (e) {
 
 
 // Respond with cached resources
-self.addEventListener("fetch", function(e) {
+self.addEventListener("fetch", function (e) {
     // cache all get requests to /api routes
-    // if (e.request.url.includes("/api/")) {
-    //   e.respondWith(
-    //     caches.open(DATA_CACHE_NAME).then(cache => {
-    //       return fetch(e.request)
-    //         .then(response => {
-    //           // If the response was good, clone it and store it in the cache.
-    //           if (response.status === 200) {
-    //             cache.put(e.request.url, response.clone());
-    //           }
-  
-    //           return response;
-    //         })
-    //     })
-    //   )}
-    console.log('fetch request : ' + e.request.url)
+    if (e.request.url.includes("/api/")) {
+        e.respondWith(
+            caches
+                .open(DATA_CACHE_NAME)
+                .then((cache) => {
+                    return fetch(e.request)
+                        .then((response) => {
+                            // If the response was good, clone it and store it in the cache.
+                            if (response.status === 200) {
+                                cache.put(e.request.url, response.clone());
+                            }
+
+                            return response;
+                        })
+                        .catch((err) => {
+                            // Network request failed, try to get it from the cache.
+                            return cache.match(e.request);
+                        });
+                })
+                .catch((err) => console.log(err))
+        );
+        return;
+    }
     e.respondWith(
-        caches.match(e.request).then(function (request) {
-            if (request) { // if cache is available, respond with cache
-                console.log('responding with cache : ' + e.request.url)
-                return request
-            } else {       // if there are no cache, try fetching request
-                console.log('file is not cached, fetching : ' + e.request.url)
-                return fetch(e.request)
-            }
+        fetch(e.request).catch(function () {
+            return caches.match(e.request).then(function (res) {
+                if (res) { // if cache is available, respond with cache
+                    // console.log('responding with cache : ' + e.request.url)
+                    return res;
+                } else if (e.request.headers.get("accept").includes("text/html")) {
 
-            // You can omit if/else for console.log & put one line below like this too.
-            // return request || fetch(e.request)
+
+                    // if there are no cache, try fetching request
+                    // console.log('file is not cached, fetching : ' + e.request.url)
+                    // return fetch(e.request)
+                    return caches.match("/");
+                }
+
+                // You can omit if/else for console.log & put one line below like this too.
+                // return request || fetch(e.request)
+            });
         })
-    )
-})
-
-
-
+    );
+});
